@@ -25,9 +25,15 @@ const Login = () => {
   };
 
   return (
+<<<<<<< HEAD
     <main className="mx-auto max-w-md px-4 py-16">
       <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-8 shadow-2xl shadow-black/40">
         <h1 className="text-3xl font-semibold text-white">Welcome back</h1>
+=======
+    <main className="mx-auto max-w-md px-4 py-8 sm:py-16">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8 shadow-2xl shadow-black/40">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-white">Welcome back</h1>
+>>>>>>> repo2/main
         <p className="mt-2 text-sm text-slate-400">Sign in with the email you used during registration.</p>
         {error && <p className="mt-4 rounded border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200">{error}</p>}
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -43,7 +49,16 @@ const Login = () => {
             />
           </div>
           <div>
+<<<<<<< HEAD
             <label className="text-sm font-medium text-slate-300">Password</label>
+=======
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-medium text-slate-300">Password</label>
+              <Link to="/forgot-password" className="text-xs text-purple-400 hover:underline">
+                Forgot password?
+              </Link>
+            </div>
+>>>>>>> repo2/main
             <input
               name="password"
               type="password"

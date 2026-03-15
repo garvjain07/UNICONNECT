@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
+=======
+﻿import { useEffect, useState } from 'react';
+>>>>>>> repo2/main
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import { formatCurrency } from '../utils/currency';
@@ -38,7 +42,11 @@ const UserHistory = () => {
               <img
                 src={transaction.listing?.images?.[0]?.url || 'https://placehold.co/100x100'}
                 alt={transaction.listing?.title}
+<<<<<<< HEAD
                 className="h-20 w-20 rounded-lg border border-slate-800 object-cover"
+=======
+                className="h-14 w-14 sm:h-20 sm:w-20 rounded-lg border border-slate-800 object-cover"
+>>>>>>> repo2/main
               />
               <div className="flex-1">
                 <div className="flex items-center gap-2">
@@ -79,7 +87,11 @@ const UserHistory = () => {
               <img
                 src={transaction.listing?.images?.[0]?.url || 'https://placehold.co/100x100'}
                 alt={transaction.listing?.title}
+<<<<<<< HEAD
                 className="h-20 w-20 rounded-lg border border-slate-800 object-cover"
+=======
+                className="h-14 w-14 sm:h-20 sm:w-20 rounded-lg border border-slate-800 object-cover"
+>>>>>>> repo2/main
               />
               <div className="flex-1">
                 <div className="flex items-center gap-2">
@@ -585,6 +597,7 @@ const UserHistory = () => {
   };
 
   return (
+<<<<<<< HEAD
     <main className="mx-auto max-w-5xl px-4 py-10 text-slate-100">
       <h1 className="mb-6 text-4xl font-bold text-white">My History</h1>
 
@@ -592,6 +605,15 @@ const UserHistory = () => {
         <button
           onClick={() => setActiveTab('buying')}
           className={`px-4 py-2 font-medium transition ${
+=======
+    <main className="mx-auto max-w-5xl px-4 py-6 sm:py-10 text-slate-100">
+      <h1 className="mb-4 sm:mb-6 text-2xl sm:text-4xl font-bold text-white">My History</h1>
+
+      <div className="mb-6 flex gap-2 overflow-x-auto border-b border-slate-800">
+        <button
+          onClick={() => setActiveTab('buying')}
+          className={`whitespace-nowrap px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition ${
+>>>>>>> repo2/main
             activeTab === 'buying'
               ? 'border-b-2 border-brand-primary text-brand-primary'
               : 'text-slate-400 hover:text-slate-200'
@@ -601,7 +623,11 @@ const UserHistory = () => {
         </button>
         <button
           onClick={() => setActiveTab('selling')}
+<<<<<<< HEAD
           className={`px-4 py-2 font-medium transition ${
+=======
+          className={`whitespace-nowrap px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition ${
+>>>>>>> repo2/main
             activeTab === 'selling'
               ? 'border-b-2 border-brand-primary text-brand-primary'
               : 'text-slate-400 hover:text-slate-200'
@@ -611,7 +637,11 @@ const UserHistory = () => {
         </button>
         <button
           onClick={() => setActiveTab('cab')}
+<<<<<<< HEAD
           className={`px-4 py-2 font-medium transition ${
+=======
+          className={`whitespace-nowrap px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition ${
+>>>>>>> repo2/main
             activeTab === 'cab'
               ? 'border-b-2 border-brand-primary text-brand-primary'
               : 'text-slate-400 hover:text-slate-200'

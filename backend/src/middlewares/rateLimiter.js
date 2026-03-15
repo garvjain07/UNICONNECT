@@ -2,6 +2,17 @@ const rateWindow = Number(process.env.RATE_LIMIT_WINDOW_MS || 60000);
 const maxRequests = Number(process.env.RATE_LIMIT_MAX || 120);
 const buckets = new Map();
 
+<<<<<<< HEAD
+=======
+// Periodically remove expired buckets to prevent memory leak
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, bucket] of buckets) {
+    if (now > bucket.expires) buckets.delete(key);
+  }
+}, rateWindow * 2);
+
+>>>>>>> repo2/main
 const rateLimiter = (req, res, next) => {
   const key = req.ip;
   const now = Date.now();

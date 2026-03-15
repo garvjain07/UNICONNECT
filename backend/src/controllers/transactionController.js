@@ -23,8 +23,12 @@ const sendNotification = async ({ userId, type, title, message, listingId, trans
       io.to(`user:${userId}`).emit('notification', notification);
     }
     return notification;
+<<<<<<< HEAD
   } catch (err) {
     console.error('Failed to dispatch notification:', err.message || err);
+=======
+  } catch (_err) {
+>>>>>>> repo2/main
     return null;
   }
 };
@@ -138,16 +142,24 @@ const updateTransactionStatus = async (req, res, next) => {
       transaction.status = 'rejected';
       // Delete related chat/messages for this listing and buyer
       try {
+<<<<<<< HEAD
         const Chat = require('../models/Chat');
         const Message = require('../models/Message');
+=======
+>>>>>>> repo2/main
         const chats = await Chat.find({ listingRef: transaction.listing._id, participants: transaction.buyer }, '_id');
         if (chats.length) {
           const chatIds = chats.map((chat) => chat._id);
           await Message.deleteMany({ chat: { $in: chatIds } });
           await Chat.deleteMany({ _id: { $in: chatIds } });
         }
+<<<<<<< HEAD
       } catch (err) {
         console.error('Error during chat cleanup for rejected request:', err);
+=======
+      } catch (_err) {
+        // chat cleanup is best-effort
+>>>>>>> repo2/main
       }
       await sendNotification({
         userId: buyerId,
@@ -163,16 +175,24 @@ const updateTransactionStatus = async (req, res, next) => {
       transaction.status = 'withdrawn';
       // Delete related chat/messages for this listing and buyer
       try {
+<<<<<<< HEAD
         const Chat = require('../models/Chat');
         const Message = require('../models/Message');
+=======
+>>>>>>> repo2/main
         const chats = await Chat.find({ listingRef: transaction.listing._id, participants: transaction.buyer }, '_id');
         if (chats.length) {
           const chatIds = chats.map((chat) => chat._id);
           await Message.deleteMany({ chat: { $in: chatIds } });
           await Chat.deleteMany({ _id: { $in: chatIds } });
         }
+<<<<<<< HEAD
       } catch (err) {
         console.error('Error during chat cleanup for withdrawn request:', err);
+=======
+      } catch (_err) {
+        // chat cleanup is best-effort
+>>>>>>> repo2/main
       }
       await sendNotification({
         userId: sellerId,
@@ -263,6 +283,7 @@ const updateTransactionStatus = async (req, res, next) => {
         // Delete chats associated with this listing
         try {
           const chats = await Chat.find({ listingRef: transaction.listing._id });
+<<<<<<< HEAD
           let deletedChats = 0, deletedMessages = 0;
           for (const chat of chats) {
             try {
@@ -277,6 +298,18 @@ const updateTransactionStatus = async (req, res, next) => {
           console.log(`Cleanup: Deleted ${deletedChats} chats and ${deletedMessages} messages for completed listing ${transaction.listing._id}`);
         } catch (err) {
           console.error('Error during chat cleanup for completed listing:', err);
+=======
+          for (const chat of chats) {
+            try {
+              await Message.deleteMany({ chat: chat._id });
+              await Chat.findByIdAndDelete(chat._id);
+            } catch (_err) {
+              // chat cleanup is best-effort
+            }
+          }
+        } catch (_err) {
+          // chat cleanup is best-effort
+>>>>>>> repo2/main
         }
         // Delete the listing from database
         await Listing.findByIdAndDelete(transaction.listing._id);

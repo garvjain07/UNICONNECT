@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
+=======
+﻿import { useEffect, useState } from 'react';
+>>>>>>> repo2/main
 import { useLocation, useNavigate } from 'react-router-dom';
 import ListingCard from '../components/ListingCard';
 import api from '../services/api';
@@ -164,8 +168,13 @@ const MyListings = () => {
   const myActiveCount = myRequests.filter((r) => isActiveTx(r.status)).length;
 
   return (
+<<<<<<< HEAD
     <main className="mx-auto max-w-full px-4 py-8">
       <h1 className="mb-6 text-3xl font-bold text-white">My Listings</h1>
+=======
+    <main className="mx-auto max-w-full px-4 py-4 sm:py-8">
+      <h1 className="mb-4 sm:mb-6 text-2xl sm:text-3xl font-bold text-white">My Listings</h1>
+>>>>>>> repo2/main
       
       {/* Messages */}
       {(error || toast) && (
@@ -183,7 +192,11 @@ const MyListings = () => {
       )}
       
       {/* Two Column Layout - Equal Half Split */}
+<<<<<<< HEAD
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+=======
+      <div className="grid grid-cols-1 gap-4 sm:gap-8 lg:grid-cols-2">
+>>>>>>> repo2/main
         {/* Left Column - My Listings */}
         <div>
           <section className="space-y-4">
@@ -242,10 +255,17 @@ const MyListings = () => {
             <h2 className="text-2xl font-semibold text-white">Requests</h2>
 
             {/* Tab Navigation */}
+<<<<<<< HEAD
             <div className="flex gap-2 border-b border-slate-700">
               <button
                 onClick={() => setActiveTab('buyRequests')}
                 className={`px-4 py-2 font-medium transition-colors ${
+=======
+            <div className="flex gap-2 overflow-x-auto border-b border-slate-700">
+              <button
+                onClick={() => setActiveTab('buyRequests')}
+                className={`whitespace-nowrap px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-colors ${
+>>>>>>> repo2/main
                   activeTab === 'buyRequests'
                     ? 'border-b-2 border-brand-primary text-brand-primary'
                     : 'text-slate-400 hover:text-slate-200'
@@ -257,7 +277,11 @@ const MyListings = () => {
               </button>
               <button
                 onClick={() => setActiveTab('myRequests')}
+<<<<<<< HEAD
                 className={`px-4 py-2 font-medium transition-colors ${
+=======
+                className={`whitespace-nowrap px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-colors ${
+>>>>>>> repo2/main
                   activeTab === 'myRequests'
                     ? 'border-b-2 border-brand-primary text-brand-primary'
                     : 'text-slate-400 hover:text-slate-200'
@@ -295,7 +319,11 @@ const MyListings = () => {
                             <img
                               src={request.listing?.images?.[0]?.url || request.listingSnapshot?.images?.[0]?.url || 'https://placehold.co/100x100'}
                               alt={request.listing?.title || request.listingSnapshot?.title}
+<<<<<<< HEAD
                               className="h-24 w-24 rounded-lg border border-slate-800 object-cover"
+=======
+                              className="h-16 w-16 sm:h-24 sm:w-24 rounded-lg border border-slate-800 object-cover"
+>>>>>>> repo2/main
                             />
                             <div className="flex-1">
                               <h3 className="text-lg font-semibold text-white">{request.listing?.title || request.listingSnapshot?.title}</h3>
@@ -422,7 +450,11 @@ const MyListings = () => {
                             <img
                               src={request.listing?.images?.[0]?.url || request.listingSnapshot?.images?.[0]?.url || 'https://placehold.co/100x100'}
                               alt={request.listing?.title || request.listingSnapshot?.title}
+<<<<<<< HEAD
                               className="h-24 w-24 rounded-lg border border-slate-800 object-cover"
+=======
+                              className="h-16 w-16 sm:h-24 sm:w-24 rounded-lg border border-slate-800 object-cover"
+>>>>>>> repo2/main
                             />
                             <div className="flex-1">
                               <h3 className="text-lg font-semibold text-white">{request.listing?.title || request.listingSnapshot?.title}</h3>
@@ -536,7 +568,11 @@ const MyListings = () => {
         <div className="fixed inset-0 z-30 flex items-center justify-center bg-slate-950/80 p-4">
           <div className="w-full max-w-md rounded-3xl border border-red-500/30 bg-slate-950 p-6 text-slate-100 shadow-2xl shadow-black/60">
             <p className="text-xs uppercase tracking-[0.3em] text-red-300">Confirm delete</p>
+<<<<<<< HEAD
             <h2 className="mt-2 text-2xl font-semibold text-white">Remove “{pendingDelete.title}”?</h2>
+=======
+            <h2 className="mt-2 text-2xl font-semibold text-white">Remove "{pendingDelete.title}"?</h2>
+>>>>>>> repo2/main
             <p className="mt-3 text-sm text-slate-400">
               This permanently deletes the listing and any chats started from it. Buyers will lose access to the conversation history.
             </p>

@@ -18,16 +18,26 @@ const Register = () => {
     setError('');
     try {
       await register(form);
+<<<<<<< HEAD
       navigate('/');
+=======
+      navigate(`/verify-email?email=${encodeURIComponent(form.email)}`);
+>>>>>>> repo2/main
     } catch (err) {
       setError(err.response?.data?.message || 'Unable to register');
     }
   };
 
   return (
+<<<<<<< HEAD
     <main className="mx-auto max-w-md px-4 py-16">
       <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-8 shadow-2xl shadow-black/40">
         <h1 className="text-3xl font-semibold text-white">Create your account</h1>
+=======
+    <main className="mx-auto max-w-md px-4 py-8 sm:py-16">
+      <div className="rounded-2xl sm:rounded-3xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8 shadow-2xl shadow-black/40">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-white">Create your account</h1>
+>>>>>>> repo2/main
         <p className="mt-2 text-sm text-slate-400">Use any email you can access for verification.</p>
         {error && <p className="mt-4 rounded border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200">{error}</p>}
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">

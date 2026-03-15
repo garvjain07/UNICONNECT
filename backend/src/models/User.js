@@ -10,6 +10,13 @@ const userSchema = new mongoose.Schema(
     role: { type: String, enum: ['user', 'admin'], default: 'user' },
     avatar: { type: String },
     verified: { type: Boolean, default: false },
+<<<<<<< HEAD
+=======
+    emailVerificationCode: { type: String },
+    emailVerificationExpires: { type: Date },
+    passwordResetCode: { type: String },
+    passwordResetExpires: { type: Date },
+>>>>>>> repo2/main
     refreshTokens: [{ token: String, createdAt: Date }],
     preferences: {
       categories: [String],
@@ -18,6 +25,10 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+<<<<<<< HEAD
+=======
+
+>>>>>>> repo2/main
 userSchema.pre('save', async function preSave(next) {
   if (!this.isModified('password')) return next();
   const salt = await bcrypt.genSalt(10);

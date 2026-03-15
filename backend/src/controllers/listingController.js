@@ -257,8 +257,13 @@ const updateListing = async (req, res, next) => {
       for (const oldImage of listing.images) {
         try {
           await deleteImage(oldImage.publicId);
+<<<<<<< HEAD
         } catch (err) {
           console.error('Failed to delete old image from Cloudinary:', oldImage.publicId, err);
+=======
+        } catch (_err) {
+          // best-effort cleanup
+>>>>>>> repo2/main
         }
       }
       
@@ -273,8 +278,13 @@ const updateListing = async (req, res, next) => {
         } finally {
           try {
             await fs.promises.unlink(tempPath);
+<<<<<<< HEAD
           } catch (err) {
             console.error('Failed to delete temp file:', tempPath, err);
+=======
+          } catch (_err) {
+            // best-effort cleanup
+>>>>>>> repo2/main
           }
         }
       }
@@ -292,8 +302,13 @@ const updateListing = async (req, res, next) => {
           for (const img of newImages) {
             try {
               await deleteImage(img.publicId);
+<<<<<<< HEAD
             } catch (err) {
               console.error('Failed to delete blocked image:', img.publicId, err);
+=======
+            } catch (_err) {
+              // best-effort cleanup
+>>>>>>> repo2/main
             }
           }
           
@@ -321,8 +336,13 @@ const updateListing = async (req, res, next) => {
       for (const publicId of oldPublicIds) {
         try {
           await deleteImage(publicId);
+<<<<<<< HEAD
         } catch (err) {
           console.error('Failed to delete image from Cloudinary:', publicId, err);
+=======
+        } catch (_err) {
+          // best-effort cleanup
+>>>>>>> repo2/main
         }
       }
       
@@ -410,6 +430,12 @@ const updateListing = async (req, res, next) => {
       delete updates.auction;
     }
     
+<<<<<<< HEAD
+=======
+    // Capture before Object.assign overwrites listing.status
+    const statusChangedToSold = updates.status === 'sold' && listing.status !== 'sold';
+
+>>>>>>> repo2/main
     Object.assign(listing, updates);
     listing.moderation = await callModeration({
       text: `${listing.title} ${listing.description}`,
@@ -421,9 +447,12 @@ const updateListing = async (req, res, next) => {
     } else if (listing.status === 'blocked') {
       listing.status = 'active';
     }
+<<<<<<< HEAD
 
     // If status is being set to 'sold', delete related chats/messages
     const statusChangedToSold = updates.status === 'sold' && listing.status !== 'sold';
+=======
+>>>>>>> repo2/main
     await listing.save();
     if (statusChangedToSold) {
       const chats = await Chat.find({ listingRef: listing._id }, '_id');
@@ -529,9 +558,13 @@ const deleteListing = async (req, res, next) => {
       .filter(Boolean);
     await Promise.all(
       publicIds.map((publicId) =>
+<<<<<<< HEAD
         deleteImage(publicId).catch((err) => {
           console.warn('Failed to delete Cloudinary image', publicId, err.message);
         })
+=======
+        deleteImage(publicId).catch(() => { /* best-effort */ })
+>>>>>>> repo2/main
       )
     );
 

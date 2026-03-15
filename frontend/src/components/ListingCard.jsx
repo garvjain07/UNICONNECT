@@ -101,12 +101,21 @@ const ListingCard = ({ listing, wideImage = false, hideBuyNowBadge = false, comp
   };
 
   return (
+<<<<<<< HEAD
     <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-lg shadow-slate-950/40 backdrop-blur overflow-hidden">
       <div className="flex gap-4">
         {/* Left: Image box */}
         <div className={(wideImage ? 'basis-1/2' : 'basis-1/4') + ' flex-shrink-0'}>
           {listing.images?.[0] ? (
             <div className="relative w-full aspect-square">
+=======
+    <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-3 sm:p-4 shadow-lg shadow-slate-950/40 backdrop-blur overflow-hidden">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+        {/* Left: Image box */}
+        <div className={'w-full sm:flex-shrink-0 ' + (wideImage ? 'sm:basis-1/2' : 'sm:basis-1/4')}>
+          {listing.images?.[0] ? (
+            <div className="relative w-full aspect-[16/10] sm:aspect-square">
+>>>>>>> repo2/main
               <img
                 src={listing.images[0].url}
                 alt={listing.title}
@@ -115,13 +124,18 @@ const ListingCard = ({ listing, wideImage = false, hideBuyNowBadge = false, comp
               />
             </div>
           ) : (
+<<<<<<< HEAD
             <div className="flex h-full w-full items-center justify-center rounded-xl bg-slate-800 text-slate-300 aspect-square">
+=======
+            <div className="flex h-32 sm:h-full w-full items-center justify-center rounded-xl bg-slate-800 text-slate-300 sm:aspect-square">
+>>>>>>> repo2/main
               <span>No Image</span>
             </div>
           )}
         </div>
 
         {/* Right: Text details */}
+<<<<<<< HEAD
         <div className={(wideImage ? 'basis-1/2' : 'basis-3/4') + ' min-w-0 relative pb-4'}>
           <div className="flex items-start justify-between pr-2 md:pr-3">
             <div>
@@ -136,6 +150,22 @@ const ListingCard = ({ listing, wideImage = false, hideBuyNowBadge = false, comp
             {!(hideBuyNowBadge && listing.listingType === 'buy-now') && (
               <span
                 className={classNames('rounded-full px-3 py-0.5 text-xs font-semibold uppercase tracking-wide', {
+=======
+        <div className={'min-w-0 relative pb-12 sm:pb-4 ' + (wideImage ? 'sm:basis-1/2' : 'sm:basis-3/4')}>
+          <div className="flex items-start justify-between gap-2 pr-2 md:pr-3">
+            <div className="min-w-0">
+              <h3 className="text-base sm:text-lg font-semibold text-slate-100 truncate">{listing.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-400">{listing.category}</p>
+            </div>
+            <p className="text-lg sm:text-xl font-semibold text-white whitespace-nowrap">{formatCurrency(displayPrice)}</p>
+          </div>
+          <p className="mt-1.5 sm:mt-2 line-clamp-2 text-xs sm:text-sm text-slate-300">{listing.description}</p>
+
+          <div className="mt-2 sm:mt-3 flex flex-wrap items-center gap-1.5 sm:gap-2 pr-2 md:pr-3">
+            {!(hideBuyNowBadge && listing.listingType === 'buy-now') && (
+              <span
+                className={classNames('rounded-full px-2 sm:px-3 py-0.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wide', {
+>>>>>>> repo2/main
                   'bg-emerald-500/20 text-emerald-300': listing.listingType === 'buy-now',
                   'bg-amber-500/20 text-amber-200': listing.listingType === 'offer',
                   'bg-cyan-500/20 text-cyan-200': listing.listingType === 'auction',
@@ -145,9 +175,15 @@ const ListingCard = ({ listing, wideImage = false, hideBuyNowBadge = false, comp
               </span>
             )}
             {isAuction && listing.auction?.endTime && listing.auction?.status !== 'ended' && (
+<<<<<<< HEAD
               <div className="flex items-center gap-2 rounded-lg bg-slate-700/60 px-2 py-1">
                 <span className="text-xs text-slate-300">⏱</span>
                 <span className="text-xs font-semibold text-slate-200">{auctionTimeRemaining}</span>
+=======
+              <div className="flex items-center gap-1.5 sm:gap-2 rounded-lg bg-slate-700/60 px-1.5 sm:px-2 py-0.5 sm:py-1">
+                <span className="text-[10px] sm:text-xs text-slate-300">⏱</span>
+                <span className="text-[10px] sm:text-xs font-semibold text-slate-200">{auctionTimeRemaining}</span>
+>>>>>>> repo2/main
               </div>
             )}
             {isAuction && listing.auction?.status === 'ended' && (
@@ -169,7 +205,11 @@ const ListingCard = ({ listing, wideImage = false, hideBuyNowBadge = false, comp
                 type="button"
                 onClick={handleBuyNow}
                 className={`rounded-full bg-brand-primary font-semibold text-white shadow-lg shadow-brand-primary/30 transition hover:-translate-y-0.5 hover:bg-brand-secondary ${
+<<<<<<< HEAD
                   compactButtons ? 'px-3 py-1 text-xs' : 'px-4 py-1.5 text-sm'
+=======
+                  compactButtons ? 'px-3 py-1 text-xs' : 'px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm'
+>>>>>>> repo2/main
                 }`}
               >
                 Buy Now
@@ -178,7 +218,11 @@ const ListingCard = ({ listing, wideImage = false, hideBuyNowBadge = false, comp
             <Link
               to={`/listings/${listing._id}`}
               className={`rounded-full border border-slate-600 font-semibold text-slate-200 transition hover:border-slate-400 ${
+<<<<<<< HEAD
                 compactButtons ? 'px-3 py-1 text-xs' : 'px-4 py-1.5 text-sm'
+=======
+                compactButtons ? 'px-3 py-1 text-xs' : 'px-3 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm'
+>>>>>>> repo2/main
               }`}
             >
               View

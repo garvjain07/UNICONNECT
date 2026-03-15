@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ListingCard from '../components/ListingCard';
+<<<<<<< HEAD
 import { useSocket } from '../context/SocketContext';
+=======
+>>>>>>> repo2/main
 import api from '../services/api';
 import { formatCurrency } from '../utils/currency';
 import logo from '../assets/logo.svg';
@@ -191,7 +194,10 @@ const Home = () => {
   const [shares, setShares] = useState([]);
   const [sharesLoading, setSharesLoading] = useState(true);
   const [shareError, setShareError] = useState('');
+<<<<<<< HEAD
   const { socket } = useSocket();
+=======
+>>>>>>> repo2/main
 
   const loadListings = async () => {
     setListingsLoading(true);
@@ -291,8 +297,13 @@ const Home = () => {
   }, []);
 
   return (
+<<<<<<< HEAD
     <main className="mx-auto max-w-6xl px-4 py-10 text-slate-100">
       <div className="flex flex-col gap-8 text-center">
+=======
+    <main className="mx-auto max-w-6xl px-4 py-6 sm:py-10 text-slate-100">
+      <div className="flex flex-col gap-4 sm:gap-8 text-center">
+>>>>>>> repo2/main
         <div>
           <div className="flex items-center justify-center gap-3">
             <img 
@@ -302,6 +313,7 @@ const Home = () => {
             />
             <p className="text-sm uppercase tracking-[0.2em] text-brand-secondary">UniConnect</p>
           </div>
+<<<<<<< HEAD
           <h1 className="mt-1 text-4xl font-semibold text-white">Marketplace + Sharing hub</h1>
           <p className="mt-2 text-base text-slate-400">Everything classmates are selling and splitting, side by side.</p>
         </div>
@@ -312,6 +324,18 @@ const Home = () => {
             <div>
               <p className="text-xs uppercase tracking-wide text-brand-secondary">Marketplace</p>
               <h2 className="text-2xl font-semibold text-white">Live Listings</h2>
+=======
+          <h1 className="mt-1 text-2xl sm:text-4xl font-semibold text-white">Marketplace + Sharing hub</h1>
+          <p className="mt-2 text-sm sm:text-base text-slate-400">Everything classmates are selling and splitting, side by side.</p>
+        </div>
+      </div>
+      <section className="mt-6 sm:mt-10 grid gap-4 sm:gap-6 lg:grid-cols-2">
+        <div className="rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900/80 p-4 sm:p-6 shadow-2xl shadow-black/40">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-xs uppercase tracking-wide text-brand-secondary">Marketplace</p>
+              <h2 className="text-xl sm:text-2xl font-semibold text-white">Live Listings</h2>
+>>>>>>> repo2/main
               <p className="text-sm text-slate-400">Scroll every item without leaving home.</p>
             </div>
             <Link
@@ -333,11 +357,19 @@ const Home = () => {
             )}
           </div>
         </div>
+<<<<<<< HEAD
         <div className="rounded-3xl border border-slate-800/80 bg-slate-950/70 p-6 shadow-2xl shadow-black/40">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="text-xs uppercase tracking-wide text-emerald-400">Sharing</p>
               <h2 className="text-2xl font-semibold text-white">Active Splits</h2>
+=======
+        <div className="rounded-2xl sm:rounded-3xl border border-slate-800/80 bg-slate-950/70 p-4 sm:p-6 shadow-2xl shadow-black/40">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-xs uppercase tracking-wide text-emerald-400">Sharing</p>
+              <h2 className="text-xl sm:text-2xl font-semibold text-white">Active Splits</h2>
+>>>>>>> repo2/main
               <p className="text-sm text-slate-400">Every expense classmates are splitting right now.</p>
             </div>
             <Link to="/shares" className="text-sm font-semibold text-brand-primary hover:text-brand-secondary">

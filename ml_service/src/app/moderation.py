@@ -8,10 +8,13 @@ BANNED_KEYWORDS = {
     'ketamine': 0.92,
     'counterfeit': 0.88,
     'wine': 0.82,
+<<<<<<< HEAD
     'Wine': 0.82,
     'WINE': 0.82,
     'Beer': 0.82,
     'BEER': 0.82,
+=======
+>>>>>>> repo2/main
     'beer': 0.82,
     'rum': 0.82,
     'vodka': 0.82,
@@ -58,7 +61,11 @@ BANNED_KEYWORDS = {
 }
 
 
+<<<<<<< HEAD
 def score_listing(title: str, description: str) -> Dict[str, str]:
+=======
+def score_listing(title: str, description: str) -> dict:
+>>>>>>> repo2/main
     text = f"{title} {description}".lower()
     max_score = 0
     reason = 'clean'

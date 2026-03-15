@@ -203,7 +203,11 @@ const ListingForm = ({ onCreated, onSuccess, initialData, mode = 'create' }) => 
   };
 
   return (
+<<<<<<< HEAD
     <form onSubmit={handleSubmit} className="mt-6 space-y-4 rounded-3xl border border-slate-800 bg-slate-900/60 p-6 shadow-2xl shadow-black/30">
+=======
+    <form onSubmit={handleSubmit} className="mt-6 space-y-4 rounded-2xl sm:rounded-3xl border border-slate-800 bg-slate-900/60 p-4 sm:p-6 shadow-2xl shadow-black/30">
+>>>>>>> repo2/main
       {error && <p className="rounded border border-red-500/30 bg-red-500/10 p-2 text-sm text-red-200">{error}</p>}
       <div>
         <label className="text-sm font-medium text-slate-300">Title</label>
