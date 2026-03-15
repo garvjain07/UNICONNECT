@@ -24,9 +24,23 @@ const initSocket = (io) => {
     socket.join(`user:${socket.user.id}`);
 
     socket.on('joinChat', (chatId) => {
+<<<<<<< HEAD
       socket.join(`chat:${chatId}`);
     });
 
+=======
+      // Leave any previously joined chat room before joining the new one
+      for (const room of socket.rooms) {
+        if (room.startsWith('chat:')) socket.leave(room);
+      }
+      socket.join(`chat:${chatId}`);
+    });
+
+    socket.on('leaveChat', (chatId) => {
+      socket.leave(`chat:${chatId}`);
+    });
+
+>>>>>>> repo2/main
     socket.on('typing', (chatId) => {
       socket.to(`chat:${chatId}`).emit('typing', { user: socket.user.id });
     });
@@ -48,7 +62,11 @@ const initSocket = (io) => {
       await message.populate('sender', 'name email');
       io.to(`chat:${chatId}`).emit('message', message);
       
+<<<<<<< HEAD
       // Create notification for other participants
+=======
+      // Create notification for other participants (only if they are NOT in this chat room)
+>>>>>>> repo2/main
       if (chat && chat.participants) {
         const recipients = chat.participants
           .filter(p => p._id.toString() !== socket.user.id)
@@ -56,9 +74,24 @@ const initSocket = (io) => {
         
         if (recipients.length > 0) {
           const senderName = message.sender?.name || 'Someone';
+<<<<<<< HEAD
           
           // Create notification for each recipient
           for (const recipientId of recipients) {
+=======
+          const chatRoom = `chat:${chatId}`;
+          const socketsInRoom = await io.in(chatRoom).fetchSockets();
+          const userIdsInRoom = new Set(socketsInRoom.map(s => s.user?.id));
+
+          for (const recipientId of recipients) {
+            const recipientStr = recipientId.toString();
+            // Skip notification if the recipient is already viewing this chat
+            if (userIdsInRoom.has(recipientStr)) continue;
+
+            // Signal the Chat page to show the blue dot for this chat
+            io.to(`user:${recipientStr}`).emit('chat:unread', { chatId });
+
+>>>>>>> repo2/main
             const notification = await Notification.create({
               user: recipientId,
               type: 'new_message',
@@ -67,8 +100,12 @@ const initSocket = (io) => {
               shareRef: chat.shareRef || null
             });
             
+<<<<<<< HEAD
             // Emit notification to recipient
             io.to(`user:${recipientId}`).emit('notification', notification);
+=======
+            io.to(`user:${recipientStr}`).emit('notification', notification);
+>>>>>>> repo2/main
           }
         }
       }
@@ -120,8 +157,13 @@ const initSocket = (io) => {
           currentBid: listing.auction?.currentBid || null,
           highestBidPerUser: highestObj,
         });
+<<<<<<< HEAD
       } catch (err) {
         console.error('bidding:join error:', err);
+=======
+      } catch (_err) {
+        // non-fatal
+>>>>>>> repo2/main
       }
     });
 
@@ -174,8 +216,12 @@ const initSocket = (io) => {
           currentBid: listing.auction.currentBid,
           highestBidPerUser: highestObj,
         });
+<<<<<<< HEAD
       } catch (err) {
         console.error('auction:bid error:', err);
+=======
+      } catch (_err) {
+>>>>>>> repo2/main
         socket.emit('auction:error', { message: 'Failed to place bid' });
       }
     });

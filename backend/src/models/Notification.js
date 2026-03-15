@@ -6,7 +6,10 @@ const notificationSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
+<<<<<<< HEAD
       index: true,
+=======
+>>>>>>> repo2/main
     },
     type: {
       type: String,

@@ -1,0 +1,28 @@
+name: Deploy ML Service to Azure
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ml_service/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create deployment package
+        working-directory: ml_service
+        run: zip -r ../ml_service.zip . -x "./__pycache__/*" "./*/__pycache__/*" "./*/*/__pycache__/*" "./.env" "./tests/*" "./.venv/*"
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Azure Web App
+        run: az webapp deploy --name uniconnect-ml --resource-group uniconnect --src-path ml_service.zip --type zip --async true

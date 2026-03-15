@@ -1,9 +1,16 @@
 const Listing = require('../models/Listing');
+<<<<<<< HEAD
 const { getIO } = require('../services/socketService');
 
 // Place a bid on an auction-type listing
 // POST /api/bidding/:listingId/bids
 async function placeBid(req, res) {
+=======
+const Transaction = require('../models/Transaction');
+const { getIO } = require('../services/socketService');
+
+async function placeBid(req, res, next) {
+>>>>>>> repo2/main
   try {
     const { listingId } = req.params;
     const userId = req.user.id;
@@ -68,6 +75,7 @@ async function placeBid(req, res) {
 
     return res.status(200).json({ message: 'Bid placed', currentBid: listing.auction.currentBid });
   } catch (err) {
+<<<<<<< HEAD
     console.error('placeBid error:', err);
     return res.status(500).json({ message: 'Internal server error' });
   }
@@ -76,6 +84,13 @@ async function placeBid(req, res) {
 // Get auction status
 // GET /api/bidding/:listingId
 async function getBiddingStatus(req, res) {
+=======
+    next(err);
+  }
+}
+
+async function getBiddingStatus(req, res, next) {
+>>>>>>> repo2/main
   try {
     const { listingId } = req.params;
     const listing = await Listing.findById(listingId).exec();
@@ -93,13 +108,19 @@ async function getBiddingStatus(req, res) {
       if (winnerId && winnerId === String(req.user.id)) {
         isWinner = true;
         try {
+<<<<<<< HEAD
           const Transaction = require('../models/Transaction');
+=======
+>>>>>>> repo2/main
           const tx = await Transaction.findOne({
             listing: listing._id,
             buyer: req.user.id,
             transactionType: 'auction',
           }).sort({ createdAt: -1 }).lean();
+<<<<<<< HEAD
           // Winner banner remains until seller marks completed
+=======
+>>>>>>> repo2/main
           winnerOpen = !!(tx && tx.status !== 'completed');
           if (tx?.amount != null) finalBid = tx.amount;
         } catch (_) {
@@ -119,8 +140,12 @@ async function getBiddingStatus(req, res) {
       winnerOpen,
     });
   } catch (err) {
+<<<<<<< HEAD
     console.error('getBiddingStatus error:', err);
     return res.status(500).json({ message: 'Internal server error' });
+=======
+    next(err);
+>>>>>>> repo2/main
   }
 }
 

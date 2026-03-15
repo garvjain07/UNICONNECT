@@ -13,10 +13,17 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [typingUsers, setTypingUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+<<<<<<< HEAD
   // Removed external user lookup results; we only filter existing chats
   const [results, setResults] = useState([]); // legacy state kept minimal to avoid refactor cost
   const [searchParams, setSearchParams] = useSearchParams();
   const activeIdRef = useRef(null);
+=======
+  const [unreadChatIds, setUnreadChatIds] = useState(new Set());
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeIdRef = useRef(null);
+  const [mobileChatOpen, setMobileChatOpen] = useState(false);
+>>>>>>> repo2/main
 
   const activeChat = useMemo(() => chats.find((chat) => chat._id === activeId), [chats, activeId]);
   const participantMap = useMemo(() => {
@@ -112,11 +119,23 @@ const Chat = () => {
     loadMessages(chatId);
     setTypingUsers([]);
     updateChatParam(chatId);
+<<<<<<< HEAD
   };
 
   // Deprecated: starting arbitrary chat by userId disabled for privacy
   const startChat = async () => {};
 
+=======
+    setMobileChatOpen(true);
+    setUnreadChatIds((prev) => {
+      if (!prev.has(chatId)) return prev;
+      const next = new Set(prev);
+      next.delete(chatId);
+      return next;
+    });
+  };
+
+>>>>>>> repo2/main
   useEffect(() => {
     loadChats();
   }, [loadChats]);
@@ -136,6 +155,13 @@ const Chat = () => {
         socket.emit('message:read', { chatId: activeId, messageId: message._id });
         clearNewMessage();
       } else {
+<<<<<<< HEAD
+=======
+        setUnreadChatIds((prev) => {
+          if (prev.has(messageChatId)) return prev;
+          return new Set(prev).add(messageChatId);
+        });
+>>>>>>> repo2/main
         loadChats();
       }
     };
@@ -149,6 +175,7 @@ const Chat = () => {
     const handleRead = ({ userId, messageId }) => {
       setMessages((prev) => prev.map((msg) => (msg._id === messageId ? { ...msg, readBy: [...(msg.readBy || []), userId] } : msg)));
     };
+<<<<<<< HEAD
     socket.on('message', handleMessage);
     socket.on('typing', handleTyping);
     socket.on('message:read', handleRead);
@@ -156,6 +183,27 @@ const Chat = () => {
       socket.off('message', handleMessage);
       socket.off('typing', handleTyping);
       socket.off('message:read', handleRead);
+=======
+    const handleUnread = ({ chatId: unreadChatId }) => {
+      if (unreadChatId && unreadChatId !== activeId) {
+        setUnreadChatIds((prev) => {
+          if (prev.has(unreadChatId)) return prev;
+          return new Set(prev).add(unreadChatId);
+        });
+        loadChats();
+      }
+    };
+    socket.on('message', handleMessage);
+    socket.on('typing', handleTyping);
+    socket.on('message:read', handleRead);
+    socket.on('chat:unread', handleUnread);
+    return () => {
+      socket.emit('leaveChat', activeId);
+      socket.off('message', handleMessage);
+      socket.off('typing', handleTyping);
+      socket.off('message:read', handleRead);
+      socket.off('chat:unread', handleUnread);
+>>>>>>> repo2/main
     };
   }, [socket, activeId, loadChats, clearNewMessage]);
 
@@ -169,9 +217,14 @@ const Chat = () => {
     socket?.emit('typing', activeId);
   };
 
+<<<<<<< HEAD
   const getChatLabel = (chat) => {
     if (chat.isGroup) {
       // Use trip name from shareRef if available
+=======
+  const getChatLabel = useCallback((chat) => {
+    if (chat.isGroup) {
+>>>>>>> repo2/main
       if (chat.shareRef?.name) {
         return chat.shareRef.name;
       }
@@ -183,7 +236,10 @@ const Chat = () => {
       return pid !== currentUserId;
     });
     
+<<<<<<< HEAD
     // If there's a listing reference, show product name with other user's name
+=======
+>>>>>>> repo2/main
     if (chat.listingRef) {
       const productName = chat.listingRef?.title || 'Product';
       const otherName = other?.name || 'User';
@@ -191,7 +247,11 @@ const Chat = () => {
     }
     
     return other?.name || 'Direct Chat';
+<<<<<<< HEAD
   };
+=======
+  }, [user?.id, user?._id]);
+>>>>>>> repo2/main
 
   // Local chat filter instead of remote user lookup
   const filteredChats = useMemo(() => {
@@ -206,9 +266,16 @@ const Chat = () => {
   }, [searchTerm, chats, getChatLabel]);
 
   return (
+<<<<<<< HEAD
     <main className="mx-auto max-w-6xl px-4 py-10 text-slate-100">
       <div className="grid gap-4 md:grid-cols-3">
         <aside className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
+=======
+    <main className="mx-auto max-w-6xl px-4 py-6 sm:py-10 text-slate-100">
+      <div className="grid gap-4 md:grid-cols-3">
+        {/* Sidebar — visible on md+, or on mobile when chat is NOT open */}
+        <aside className={`rounded-2xl border border-slate-800 bg-slate-900/70 p-4 ${mobileChatOpen ? 'hidden md:block' : 'block'}`}>
+>>>>>>> repo2/main
           <div className="flex gap-2">
             <input
               value={searchTerm}
@@ -234,9 +301,20 @@ const Chat = () => {
                 <button
                   type="button"
                   onClick={() => selectChat(chat._id)}
+<<<<<<< HEAD
                   className={`w-full rounded px-3 py-2 text-left ${activeId === chat._id ? 'bg-brand-primary/20 text-white' : 'text-slate-400'}`}
                 >
                   <span className="block text-sm font-semibold">{getChatLabel(chat)}</span>
+=======
+                  className={`relative w-full rounded px-3 py-2 text-left ${activeId === chat._id ? 'bg-brand-primary/20 text-white' : 'text-slate-400'}`}
+                >
+                  <span className="block text-sm font-semibold">
+                    {getChatLabel(chat)}
+                    {unreadChatIds.has(chat._id) && (
+                      <span className="ml-2 inline-block h-2.5 w-2.5 rounded-full bg-blue-500" />
+                    )}
+                  </span>
+>>>>>>> repo2/main
                   <span className="text-xs text-slate-500">
                     {new Date(chat.updatedAt).toLocaleDateString()} at {new Date(chat.updatedAt).toLocaleTimeString()}
                   </span>
@@ -245,14 +323,32 @@ const Chat = () => {
             ))}
           </ul>
         </aside>
+<<<<<<< HEAD
         <section className="md:col-span-2">
+=======
+        {/* Chat area — visible on md+, or on mobile when chat IS open */}
+        <section className={`md:col-span-2 ${mobileChatOpen ? 'block' : 'hidden md:block'}`}>
+          {/* Mobile back button */}
+          <button
+            type="button"
+            onClick={() => setMobileChatOpen(false)}
+            className="mb-3 flex items-center gap-1 text-sm text-slate-400 md:hidden"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+            Back to chats
+          </button>
+>>>>>>> repo2/main
           <ChatBox
             chat={activeChat}
             messages={messages}
             typingUsers={typingNames}
             onSend={sendMessage}
             onTyping={handleTyping}
+<<<<<<< HEAD
             currentUserId={user?.id}
+=======
+            currentUserId={user?.id || user?._id}
+>>>>>>> repo2/main
           />
         </section>
       </div>

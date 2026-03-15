@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
+=======
+﻿import { useState, useEffect } from 'react';
+>>>>>>> repo2/main
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import BillShareCard from '../components/BillShareCard';
@@ -409,8 +413,13 @@ const BillShare = () => {
   };
 
   return (
+<<<<<<< HEAD
     <main className="mx-auto max-w-full px-4 py-8">
       <h1 className="mb-6 text-3xl font-bold text-white">Sharing</h1>
+=======
+    <main className="mx-auto max-w-full px-4 py-4 sm:py-8">
+      <h1 className="mb-4 sm:mb-6 text-2xl sm:text-3xl font-bold text-white">Sharing</h1>
+>>>>>>> repo2/main
       
       {/* Messages */}
       {(joinError || successMessage || error) && (
@@ -422,7 +431,11 @@ const BillShare = () => {
       )}
       
       {/* Two Column Layout - Equal Half Split */}
+<<<<<<< HEAD
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+=======
+      <div className="grid grid-cols-1 gap-4 sm:gap-8 lg:grid-cols-2">
+>>>>>>> repo2/main
         {/* Left Column - My Sharing */}
         <div>
           <section className="space-y-4">
@@ -464,10 +477,17 @@ const BillShare = () => {
             <h2 className="text-2xl font-semibold text-white">Browse Shares</h2>
 
             {/* Tab Navigation */}
+<<<<<<< HEAD
             <div className="flex gap-2 border-b border-slate-700">
               <button
                 onClick={() => setActiveTab('available')}
                 className={`px-4 py-2 font-medium transition-colors ${
+=======
+            <div className="flex gap-2 overflow-x-auto border-b border-slate-700 -mx-1 px-1">
+              <button
+                onClick={() => setActiveTab('available')}
+                className={`whitespace-nowrap px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-colors ${
+>>>>>>> repo2/main
                   activeTab === 'available'
                     ? 'border-b-2 border-brand-primary text-brand-primary'
                     : 'text-slate-400 hover:text-slate-200'
@@ -477,7 +497,11 @@ const BillShare = () => {
               </button>
               <button
                 onClick={() => setActiveTab('myRequests')}
+<<<<<<< HEAD
                 className={`px-4 py-2 font-medium transition-colors ${
+=======
+                className={`whitespace-nowrap px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-colors ${
+>>>>>>> repo2/main
                   activeTab === 'myRequests'
                     ? 'border-b-2 border-brand-primary text-brand-primary'
                     : 'text-slate-400 hover:text-slate-200'
@@ -491,7 +515,11 @@ const BillShare = () => {
               </button>
               <button
                 onClick={() => setActiveTab('receivedRequests')}
+<<<<<<< HEAD
                 className={`px-4 py-2 font-medium transition-colors ${
+=======
+                className={`whitespace-nowrap px-3 sm:px-4 py-2 text-sm sm:text-base font-medium transition-colors ${
+>>>>>>> repo2/main
                   activeTab === 'receivedRequests'
                     ? 'border-b-2 border-brand-primary text-brand-primary'
                     : 'text-slate-400 hover:text-slate-200'
@@ -587,9 +615,17 @@ const BillShare = () => {
                     setShowCreateForm(false);
                     setError('');
                   }}
+<<<<<<< HEAD
                   className="text-2xl text-slate-400 hover:text-white"
                 >
                   ×
+=======
+                  className="text-slate-400 hover:text-white"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+>>>>>>> repo2/main
                 </button>
               </div>
               <form onSubmit={createShare} className="space-y-3">
@@ -623,7 +659,11 @@ const BillShare = () => {
                 {/* Rest of form fields will be added similarly */}
                 {form.shareType === 'cab' && (
                   <>
+<<<<<<< HEAD
                     <div className="grid grid-cols-2 gap-3">
+=======
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                       <input
                         placeholder="From City"
                         value={form.fromCity}
@@ -639,7 +679,11 @@ const BillShare = () => {
                         required
                       />
                     </div>
+<<<<<<< HEAD
                     <div className="grid grid-cols-2 gap-3">
+=======
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                       <div>
                         <label className="mb-1 block text-xs text-slate-400">Departure Time</label>
                         <input
@@ -670,7 +714,11 @@ const BillShare = () => {
                         required
                       />
                     </div>
+<<<<<<< HEAD
                     <div className="grid grid-cols-2 gap-3">
+=======
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                       <div>
                         <label className="mb-1 block text-xs text-slate-400">Max Passengers</label>
                         <input
@@ -768,7 +816,11 @@ const BillShare = () => {
                         <option value="Merch">Merch</option>
                       </select>
                     </div>
+<<<<<<< HEAD
                     <div className="grid grid-cols-2 gap-3">
+=======
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                       <div>
                         <label className="mb-1 block text-xs text-slate-400">Min Persons</label>
                         <input
@@ -874,9 +926,17 @@ const BillShare = () => {
                     setUpdateShareId(null);
                     setError('');
                   }}
+<<<<<<< HEAD
                   className="text-2xl text-slate-400 hover:text-white"
                 >
                   ×
+=======
+                  className="text-slate-400 hover:text-white"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+>>>>>>> repo2/main
                 </button>
               </div>
             <form onSubmit={updateShare} className="space-y-3">
@@ -911,7 +971,11 @@ const BillShare = () => {
               {/* Cab Sharing Fields */}
               {form.shareType === 'cab' && (
                 <>
+<<<<<<< HEAD
                   <div className="grid grid-cols-2 gap-3">
+=======
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                     <input
                       placeholder="From City"
                       value={form.fromCity}
@@ -927,7 +991,11 @@ const BillShare = () => {
                       required
                     />
                   </div>
+<<<<<<< HEAD
                   <div className="grid grid-cols-2 gap-3">
+=======
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                     <div>
                       <label className="mb-1 block text-xs text-slate-400">Departure Time</label>
                       <input
@@ -961,7 +1029,11 @@ const BillShare = () => {
                       required
                     />
                   </div>
+<<<<<<< HEAD
                   <div className="grid grid-cols-2 gap-3">
+=======
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                     <div>
                       <label className="mb-1 block text-xs text-slate-400">Max Passengers</label>
                       <input
@@ -1070,7 +1142,11 @@ const BillShare = () => {
                       <option value="Merch">Merch</option>
                     </select>
                   </div>
+<<<<<<< HEAD
                   <div className="grid grid-cols-2 gap-3">
+=======
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                     <div>
                       <label className="mb-1 block text-xs text-slate-400">Min Persons</label>
                       <input

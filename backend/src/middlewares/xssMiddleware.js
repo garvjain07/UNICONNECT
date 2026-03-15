@@ -1,5 +1,6 @@
 const xss = require('xss');
 
+<<<<<<< HEAD
 const sanitizeValue = (value) => {
   if (typeof value === 'string') {
     return xss(value, {
@@ -7,6 +8,17 @@ const sanitizeValue = (value) => {
       stripIgnoreTag: true,
       stripIgnoreTagBody: ['script'],
     });
+=======
+const xssOptions = {
+  whiteList: {},
+  stripIgnoreTag: true,
+  stripIgnoreTagBody: ['script'],
+};
+
+const sanitizeValue = (value) => {
+  if (typeof value === 'string') {
+    return xss(value, xssOptions);
+>>>>>>> repo2/main
   }
   if (Array.isArray(value)) {
     return value.map(sanitizeValue);

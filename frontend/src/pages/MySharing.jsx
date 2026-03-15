@@ -89,8 +89,13 @@ const MySharing = () => {
         return isHost;
       });
       setMyShares(hostShares);
+<<<<<<< HEAD
     } catch (err) {
       console.error('Failed to load shares:', err);
+=======
+    } catch (_err) {
+      // handled by error state
+>>>>>>> repo2/main
     }
   };
 
@@ -104,9 +109,13 @@ const MySharing = () => {
   useEffect(() => {
     if (!socket || !user) return;
 
+<<<<<<< HEAD
     const handleShareUpdate = (data) => {
       console.log('Share update received:', data);
       // Reload shares when there's an update
+=======
+    const handleShareUpdate = () => {
+>>>>>>> repo2/main
       loadMyShares();
     };
 
@@ -269,9 +278,15 @@ const MySharing = () => {
   };
 
   return (
+<<<<<<< HEAD
     <main className="mx-auto max-w-6xl px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-3xl font-bold text-white">My Sharing</h1>
+=======
+    <main className="mx-auto max-w-6xl px-4 py-4 sm:py-8">
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white">My Sharing</h1>
+>>>>>>> repo2/main
         <button
           onClick={() => {
             setForm(defaultForm);
@@ -301,9 +316,17 @@ const MySharing = () => {
                     setShowCreateForm(false);
                     setError('');
                   }}
+<<<<<<< HEAD
                   className="text-2xl text-slate-400 hover:text-white"
                 >
                   ×
+=======
+                  className="text-slate-400 hover:text-white"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+>>>>>>> repo2/main
                 </button>
               </div>
               <form onSubmit={createShare} className="space-y-3">
@@ -337,7 +360,11 @@ const MySharing = () => {
                 {/* Cab Sharing Fields */}
                 {form.shareType === 'cab' && (
                   <>
+<<<<<<< HEAD
                     <div className="grid grid-cols-2 gap-3">
+=======
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                   <input
                     placeholder="From City"
                     value={form.fromCity}
@@ -353,7 +380,11 @@ const MySharing = () => {
                     required
                   />
                 </div>
+<<<<<<< HEAD
                 <div className="grid grid-cols-2 gap-3">
+=======
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                   <div>
                     <label className="mb-1 block text-xs text-slate-400">Departure Time</label>
                     <input
@@ -385,7 +416,11 @@ const MySharing = () => {
                   />
                   <p className="mt-1 text-xs text-slate-500">Users cannot join after this time</p>
                 </div>
+<<<<<<< HEAD
                 <div className="grid grid-cols-2 gap-3">
+=======
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                   <div>
                     <label className="mb-1 block text-xs text-slate-400">Max Passengers</label>
                     <input
@@ -485,7 +520,11 @@ const MySharing = () => {
                   onChange={(e) => setForm((prev) => ({ ...prev, productCategory: e.target.value }))}
                   className="w-full rounded border border-slate-700 bg-slate-950/60 px-3 py-2 text-slate-100 placeholder:text-slate-500"
                 />
+<<<<<<< HEAD
                 <div className="grid grid-cols-2 gap-3">
+=======
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                   <div>
                     <label className="mb-1 block text-xs text-slate-400">Bulk Quantity</label>
                     <input
@@ -531,7 +570,11 @@ const MySharing = () => {
                     <option value="Merch">Merch</option>
                   </select>
                 </div>
+<<<<<<< HEAD
                 <div className="grid grid-cols-2 gap-3">
+=======
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                   <div>
                     <label className="mb-1 block text-xs text-slate-400">Min Persons</label>
                     <input
@@ -611,7 +654,11 @@ const MySharing = () => {
                   <p className="mt-1 text-xs text-red-400">Host contribution cannot exceed total amount!</p>
                 )}
                 <p className="mt-1 text-xs text-slate-500">
+<<<<<<< HEAD
                   Remaining ₹{Math.max(0, form.totalAmount - form.hostContribution).toFixed(2)} will be split equally among others
+=======
+                  Remaining &#8377;{Math.max(0, form.totalAmount - form.hostContribution).toFixed(2)} will be split equally among others
+>>>>>>> repo2/main
                 </p>
               </div>
             )}
@@ -697,7 +744,11 @@ const MySharing = () => {
                 <div className="space-y-4 rounded-lg border border-slate-800 bg-slate-950/40 p-4">
                   <h3 className="text-sm font-semibold text-brand-primary">Cab Details</h3>
                   
+<<<<<<< HEAD
                   <div className="grid grid-cols-2 gap-3">
+=======
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                     <div>
                       <label className="mb-1.5 block text-xs font-medium text-slate-400">From City</label>
                       <input
@@ -722,7 +773,11 @@ const MySharing = () => {
                     </div>
                   </div>
 
+<<<<<<< HEAD
                   <div className="grid grid-cols-2 gap-3">
+=======
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                     <div>
                       <label className="mb-1.5 block text-xs font-medium text-slate-400">Departure Time</label>
                       <input
@@ -756,7 +811,11 @@ const MySharing = () => {
                     <p className="mt-1.5 text-xs text-slate-500">Users cannot join after this time</p>
                   </div>
 
+<<<<<<< HEAD
                   <div className="grid grid-cols-2 gap-3">
+=======
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                     <div>
                       <label className="mb-1.5 block text-xs font-medium text-slate-400">Max Passengers</label>
                       <input
@@ -873,7 +932,11 @@ const MySharing = () => {
                     </select>
                   </div>
 
+<<<<<<< HEAD
                   <div className="grid grid-cols-2 gap-3">
+=======
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+>>>>>>> repo2/main
                     <div>
                       <label className="mb-1.5 block text-xs font-medium text-slate-400">Min Persons</label>
                       <input
@@ -920,7 +983,11 @@ const MySharing = () => {
                 <div>
                   <label className="mb-1.5 block text-xs font-medium text-slate-400">Total Estimated Cost</label>
                   <div className="relative">
+<<<<<<< HEAD
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">₹</span>
+=======
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">&#8377;</span>
+>>>>>>> repo2/main
                     <input
                       type="number"
                       min="1"
@@ -949,7 +1016,11 @@ const MySharing = () => {
                   <div className="rounded-lg bg-slate-900/60 p-3">
                     <label className="mb-1.5 block text-xs font-medium text-slate-400">Host Willing to Pay</label>
                     <div className="relative">
+<<<<<<< HEAD
                       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">₹</span>
+=======
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">&#8377;</span>
+>>>>>>> repo2/main
                       <input
                         type="number"
                         min="0"
@@ -969,7 +1040,11 @@ const MySharing = () => {
                       <p className="mt-1.5 text-xs text-red-400">Host contribution cannot exceed total amount!</p>
                     )}
                     <p className="mt-2 text-xs text-slate-500">
+<<<<<<< HEAD
                       Remaining <span className="font-semibold text-brand-primary">₹{Math.max(0, form.totalAmount - form.hostContribution).toFixed(2)}</span> will be split equally among others
+=======
+                      Remaining <span className="font-semibold text-brand-primary">&#8377;{Math.max(0, form.totalAmount - form.hostContribution).toFixed(2)}</span> will be split equally among others
+>>>>>>> repo2/main
                     </p>
                   </div>
                 )}

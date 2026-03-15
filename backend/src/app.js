@@ -19,6 +19,7 @@ const adminRoutes = require('./routes/adminRoutes');
 const mlProxyRoutes = require('./routes/mlProxyRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 const { errorHandler } = require('./middlewares/errorMiddleware');
+<<<<<<< HEAD
 const { rateLimiter } = require('./middlewares/rateLimiter');
 const { xssClean } = require('./middlewares/xssMiddleware');
 
@@ -36,6 +37,16 @@ app.use(cors({
     }
     return callback(new Error('Not allowed by CORS'));
   },
+=======
+const { xssClean } = require('./middlewares/xssMiddleware');
+const { corsOriginCallback } = require('./config/cors');
+
+const app = express();
+
+app.use(helmet());
+app.use(cors({
+  origin: corsOriginCallback,
+>>>>>>> repo2/main
   credentials: true,
 }));
 app.use(express.json({ limit: '2mb' }));
@@ -47,7 +58,10 @@ app.use(rateLimit({
   windowMs: Number(process.env.RATE_LIMIT_WINDOW_MS) || 60 * 1000,
   max: Number(process.env.RATE_LIMIT_MAX) || 120,
 }));
+<<<<<<< HEAD
 app.use(rateLimiter);
+=======
+>>>>>>> repo2/main
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: Date.now() });

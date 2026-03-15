@@ -1,4 +1,5 @@
 const express = require('express');
+<<<<<<< HEAD
 const Notification = require('../models/Notification');
 const { auth } = require('../middlewares/authMiddleware');
 
@@ -110,5 +111,25 @@ router.delete('/:id', auth(), async (req, res, next) => {
     next(err);
   }
 });
+=======
+const { auth } = require('../middlewares/authMiddleware');
+const {
+  getNotifications,
+  getUnreadCount,
+  markAsRead,
+  markAllRead,
+  clearAll,
+  deleteNotification,
+} = require('../controllers/notificationController');
+
+const router = express.Router();
+
+router.get('/', auth(), getNotifications);
+router.get('/unread-count', auth(), getUnreadCount);
+router.put('/:id/read', auth(), markAsRead);
+router.put('/mark-all-read', auth(), markAllRead);
+router.delete('/clear-all', auth(), clearAll);
+router.delete('/:id', auth(), deleteNotification);
+>>>>>>> repo2/main
 
 module.exports = router;
